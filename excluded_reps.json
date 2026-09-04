@@ -1,0 +1,9 @@
+{
+ "_comment": "Reps to keep OFF the leaderboard permanently (e.g. no longer with Jordano's). Matched case-insensitively against the Snowflake EMPLOYEE_NAME. make_data.py filters these on every daily run, so they never reappear when the data refreshes. Add/remove names here as the roster changes.",
+ "names": [
+  "Bob Weirum",
+  "John Tomasso",
+  "Mark Brunner",
+  "Omar Quezada"
+ ]
+}

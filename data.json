@@ -5,10 +5,10 @@
   "goal": 90
  },
  "team": {
-  "combined": 60,
-  "self_serve": 40,
-  "oa": 20,
-  "reps": 42
+  "combined": 61,
+  "self_serve": 42,
+  "oa": 19,
+  "reps": 38
  },
  "reps": [
   {
@@ -72,16 +72,6 @@
    "rank": 6
   },
   {
-   "name": "Bob Weirum",
-   "orders": 1546,
-   "self_serve": 0.2251,
-   "oa": 0.4864,
-   "rep_entered": 0.2885,
-   "combined": 0.7115,
-   "seg": "Established",
-   "rank": 7
-  },
-  {
    "name": "Troy Brown",
    "orders": 600,
    "self_serve": 0.3183,
@@ -89,7 +79,7 @@
    "rep_entered": 0.3017,
    "combined": 0.6983,
    "seg": "Established",
-   "rank": 8
+   "rank": 7
   },
   {
    "name": "Richard Padilla",
@@ -99,7 +89,7 @@
    "rep_entered": 0.3128,
    "combined": 0.6872,
    "seg": "Established",
-   "rank": 9
+   "rank": 8
   },
   {
    "name": "Mike Lamas",
@@ -109,7 +99,7 @@
    "rep_entered": 0.3146,
    "combined": 0.6854,
    "seg": "Established",
-   "rank": 10
+   "rank": 9
   },
   {
    "name": "Anthony Ritter",
@@ -119,7 +109,7 @@
    "rep_entered": 0.3438,
    "combined": 0.6562,
    "seg": "Established",
-   "rank": 11
+   "rank": 10
   },
   {
    "name": "Steve Smeets",
@@ -129,7 +119,7 @@
    "rep_entered": 0.3508,
    "combined": 0.6492,
    "seg": "Established",
-   "rank": 12
+   "rank": 11
   },
   {
    "name": "Sean Clark",
@@ -139,7 +129,7 @@
    "rep_entered": 0.3532,
    "combined": 0.6468,
    "seg": "Established",
-   "rank": 13
+   "rank": 12
   },
   {
    "name": "Shawn Wyman",
@@ -149,7 +139,7 @@
    "rep_entered": 0.36,
    "combined": 0.64,
    "seg": "Established",
-   "rank": 14
+   "rank": 13
   },
   {
    "name": "Joe Ramboldt",
@@ -159,7 +149,7 @@
    "rep_entered": 0.3829,
    "combined": 0.6171,
    "seg": "Established",
-   "rank": 15
+   "rank": 14
   },
   {
    "name": "Mark Jackson",
@@ -169,7 +159,7 @@
    "rep_entered": 0.3881,
    "combined": 0.6119,
    "seg": "Established",
-   "rank": 16
+   "rank": 15
   },
   {
    "name": "Sean Bevan",
@@ -179,7 +169,7 @@
    "rep_entered": 0.3973,
    "combined": 0.6027,
    "seg": "Established",
-   "rank": 17
+   "rank": 16
   },
   {
    "name": "James Hernandez",
@@ -189,7 +179,7 @@
    "rep_entered": 0.4,
    "combined": 0.6,
    "seg": "Established",
-   "rank": 18
+   "rank": 17
   },
   {
    "name": "Cameron Pyles",
@@ -199,7 +189,7 @@
    "rep_entered": 0.4005,
    "combined": 0.5995,
    "seg": "Established",
-   "rank": 19
+   "rank": 18
   },
   {
    "name": "Derek Bettencourt",
@@ -209,7 +199,7 @@
    "rep_entered": 0.4054,
    "combined": 0.5946,
    "seg": "Established",
-   "rank": 20
+   "rank": 19
   },
   {
    "name": "Bryan Burns",
@@ -219,7 +209,7 @@
    "rep_entered": 0.4081,
    "combined": 0.5919,
    "seg": "Established",
-   "rank": 21
+   "rank": 20
   },
   {
    "name": "Doug Sharpe",
@@ -229,7 +219,7 @@
    "rep_entered": 0.4184,
    "combined": 0.5816,
    "seg": "Established",
-   "rank": 22
+   "rank": 21
   },
   {
    "name": "Chantell St.Claire",
@@ -239,7 +229,7 @@
    "rep_entered": 0.4225,
    "combined": 0.5775,
    "seg": "Established",
-   "rank": 23
+   "rank": 22
   },
   {
    "name": "Jessica Costello",
@@ -249,7 +239,7 @@
    "rep_entered": 0.4331,
    "combined": 0.5669,
    "seg": "Established",
-   "rank": 24
+   "rank": 23
   },
   {
    "name": "Peter Baer",
@@ -259,7 +249,7 @@
    "rep_entered": 0.4346,
    "combined": 0.5654,
    "seg": "Established",
-   "rank": 25
+   "rank": 24
   },
   {
    "name": "Daniel Hook",
@@ -269,7 +259,7 @@
    "rep_entered": 0.4385,
    "combined": 0.5615,
    "seg": "Established",
-   "rank": 26
+   "rank": 25
   },
   {
    "name": "Rich Mullinix",
@@ -279,7 +269,7 @@
    "rep_entered": 0.4488,
    "combined": 0.5512,
    "seg": "Established",
-   "rank": 27
+   "rank": 26
   },
   {
    "name": "Luis Segura",
@@ -289,7 +279,7 @@
    "rep_entered": 0.4557,
    "combined": 0.5443,
    "seg": "Established",
-   "rank": 28
+   "rank": 27
   },
   {
    "name": "Don Owens",
@@ -299,7 +289,7 @@
    "rep_entered": 0.4653,
    "combined": 0.5347,
    "seg": "Established",
-   "rank": 29
+   "rank": 28
   },
   {
    "name": "Luis Contreras",
@@ -309,7 +299,7 @@
    "rep_entered": 0.472,
    "combined": 0.528,
    "seg": "Established",
-   "rank": 30
+   "rank": 29
   },
   {
    "name": "Adam Herrera",
@@ -319,17 +309,7 @@
    "rep_entered": 0.4736,
    "combined": 0.5264,
    "seg": "Established",
-   "rank": 31
-  },
-  {
-   "name": "John Tomasso",
-   "orders": 2393,
-   "self_serve": 0.2386,
-   "oa": 0.2846,
-   "rep_entered": 0.4768,
-   "combined": 0.5232,
-   "seg": "Established",
-   "rank": 32
+   "rank": 30
   },
   {
    "name": "Marshall Lencioni",
@@ -339,7 +319,7 @@
    "rep_entered": 0.4851,
    "combined": 0.5149,
    "seg": "Established",
-   "rank": 33
+   "rank": 31
   },
   {
    "name": "Jacob Lopez",
@@ -349,7 +329,7 @@
    "rep_entered": 0.4951,
    "combined": 0.5049,
    "seg": "Established",
-   "rank": 34
+   "rank": 32
   },
   {
    "name": "Ernie Veloz",
@@ -359,7 +339,7 @@
    "rep_entered": 0.5087,
    "combined": 0.4913,
    "seg": "Established",
-   "rank": 35
+   "rank": 33
   },
   {
    "name": "Randy Sifuentez",
@@ -369,7 +349,7 @@
    "rep_entered": 0.5194,
    "combined": 0.4806,
    "seg": "Established",
-   "rank": 36
+   "rank": 34
   },
   {
    "name": "James Soto",
@@ -379,7 +359,7 @@
    "rep_entered": 0.5329,
    "combined": 0.4671,
    "seg": "Established",
-   "rank": 37
+   "rank": 35
   },
   {
    "name": "Joe Torres",
@@ -389,7 +369,7 @@
    "rep_entered": 0.5369,
    "combined": 0.4631,
    "seg": "Established",
-   "rank": 38
+   "rank": 36
   },
   {
    "name": "Osvaldo Ceja-Vera",
@@ -399,7 +379,7 @@
    "rep_entered": 0.561,
    "combined": 0.439,
    "seg": "Established",
-   "rank": 39
+   "rank": 37
   },
   {
    "name": "Alex Torres",
@@ -409,27 +389,7 @@
    "rep_entered": 0.5704,
    "combined": 0.4296,
    "seg": "Established",
-   "rank": 40
-  },
-  {
-   "name": "Mark Brunner",
-   "orders": 10,
-   "self_serve": 0.2,
-   "oa": 0.0,
-   "rep_entered": 0.8,
-   "combined": 0.2,
-   "seg": "Low volume",
-   "rank": 41
-  },
-  {
-   "name": "Omar Quezada",
-   "orders": 20,
-   "self_serve": 0.0,
-   "oa": 0.2,
-   "rep_entered": 0.8,
-   "combined": 0.2,
-   "seg": "Established",
-   "rank": 42
+   "rank": 38
   }
  ]
 }

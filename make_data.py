@@ -9,7 +9,9 @@ accepts either the full tool envelope ({"result_set": {"data": [...],
 row-objects. Columns expected (from query.sql):
   EMPLOYEE_NAME, TENURE_MO, BOOK, ACTIVE_ACCTS, ORDERS, SELF_SERVE_ORDERS, OA_ORDERS, SEGMENT
 """
-import json, sys, datetime
+import json, sys, datetime, os
+
+HERE = os.path.dirname(os.path.abspath(__file__))
 
 def load_rows(path):
     with open(path) as f:
@@ -34,10 +36,23 @@ def load_rows(path):
 def num(v):
     return float(v) if v not in (None, "") else 0.0
 
+def load_excluded():
+    """Names to keep off the board permanently (departed reps, etc.), lower-cased."""
+    p = os.path.join(HERE, "excluded_reps.json")
+    if not os.path.exists(p):
+        return set()
+    with open(p) as f:
+        return {n.strip().lower() for n in json.load(f).get("names", [])}
+
 def main(path):
     rows = load_rows(path)
+    excluded = load_excluded()
     reps = []
+    skipped = []
     for r in rows:
+        if r["EMPLOYEE_NAME"].strip().lower() in excluded:
+            skipped.append(r["EMPLOYEE_NAME"])
+            continue
         orders = num(r["ORDERS"])
         if orders <= 0:
             continue
@@ -71,6 +86,8 @@ def main(path):
         json.dump(data, f, indent=1)
     print(f"Wrote data.json — {len(reps)} reps; team combined {team['combined']}% "
           f"(self-serve {team['self_serve']}%, OA {team['oa']}%)")
+    if skipped:
+        print(f"Excluded {len(skipped)} rep(s) per excluded_reps.json: {', '.join(skipped)}")
 
 if __name__ == "__main__":
     main(sys.argv[1] if len(sys.argv) > 1 else "raw.json")
