@@ -1,0 +1,594 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Jordano's Digital Adoption Leaderboard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap">
+<style>
+:root{
+  --ground:#EAE8DF; --panel:#FFFFFF; --panel-2:#F4F2EA;
+  --ink:#04180E; --muted:#5E6B5F; --line:#E1DFD4;
+  --self:#0F8E42; --oa:#83DE86; --rep:#CFCFBE; --goal:#DA5000;
+  --hit:#E6F6EA;
+  --head-bg:#002710; --head-2:#013A18; --head-ink:#FFFFFF; --head-accent:#95F596; --head-muted:#9FCBAB;
+  --shadow:0 1px 2px rgba(0,20,8,.06),0 1px 1px rgba(0,20,8,.04);
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --ground:#05130C; --panel:#0B2216; --panel-2:#0E2A1B;
+    --ink:#EAF3EC; --muted:#8DA492; --line:#173a28;
+    --self:#1FA355; --oa:#8CE68D; --rep:#40584A; --goal:#FF6A2C;
+    --hit:#0f3320;
+    --head-bg:#02160B; --head-2:#052916; --head-ink:#FFFFFF; --head-accent:#95F596; --head-muted:#8FBF9D;
+    --shadow:0 1px 2px rgba(0,0,0,.4);
+  }
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--ground);color:var(--ink);
+  font-family:Inter,system-ui,-apple-system,sans-serif;
+  -webkit-font-smoothing:antialiased;line-height:1.3}
+img{max-width:100%}
+.wrap{max-width:1500px;margin:0 auto;padding:clamp(14px,2vw,26px)}
+.head{background:linear-gradient(135deg,var(--head-bg),var(--head-2));
+  color:var(--head-ink);border-radius:16px;padding:clamp(18px,2.4vw,30px) clamp(20px,2.6vw,34px);
+  box-shadow:var(--shadow);position:relative;overflow:hidden}
+.eyebrow{font-family:Archivo;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
+  font-size:12px;color:var(--head-accent)}
+h1{font-family:Archivo;font-weight:900;letter-spacing:-.015em;margin:.15em 0 0;
+  font-size:clamp(28px,4vw,48px);line-height:1;text-wrap:balance}
+.sub{color:var(--head-muted);font-size:clamp(13px,1.1vw,15px);margin-top:.5em;max-width:74ch}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+.chip{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);
+  border-radius:11px;padding:9px 15px;min-width:104px}
+.chip .k{font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--head-muted)}
+.chip .v{font-family:Archivo;font-weight:800;font-size:clamp(20px,2.2vw,27px);line-height:1.1;
+  font-variant-numeric:tabular-nums}
+.chip.goal .v{color:var(--goal)}
+.chip.big .v{color:var(--head-accent)}
+.legend{display:flex;flex-wrap:wrap;align-items:center;gap:18px;margin:16px 2px 6px;
+  font-size:12.5px;color:var(--muted)}
+.legend b{color:var(--ink);font-weight:600}
+.key{display:inline-flex;align-items:center;gap:7px}
+.sw{width:15px;height:15px;border-radius:4px;display:inline-block}
+.sw.self{background:var(--self)} .sw.oa{background:var(--oa)} .sw.rep{background:var(--rep)}
+.sw.goal{width:3px;height:16px;border-radius:0;background:var(--goal)}
+.board{display:grid;grid-template-columns:1fr 1fr;gap:clamp(14px,1.6vw,26px);margin-top:8px}
+.col{background:var(--panel);border:1px solid var(--line);border-radius:14px;
+  padding:8px 12px 12px;box-shadow:var(--shadow)}
+.colhead{display:grid;grid-template-columns:38px 158px 1fr 56px;align-items:end;gap:12px;
+  padding:6px 4px 8px;border-bottom:1px solid var(--line);
+  font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.colhead .ch-track{text-align:left;position:relative}
+.colhead .ch-goal{position:absolute;left:90%;transform:translateX(-50%);color:var(--goal);
+  font-family:Archivo;font-weight:700;white-space:nowrap}
+.colhead .ch-val{text-align:right}
+.row{display:grid;grid-template-columns:38px 158px 1fr 56px;align-items:center;gap:12px;
+  padding:5px 4px;border-bottom:1px solid var(--line)}
+.row:last-child{border-bottom:0}
+.row.hit{background:var(--hit)}
+.rank{font-family:Archivo;font-weight:800;font-size:17px;text-align:center;color:var(--muted);
+  font-variant-numeric:tabular-nums}
+.rank.gold{color:#C79A24} .rank.silver{color:#8C9398} .rank.bronze{color:#B26A38}
+.name{font-weight:600;font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+  display:flex;align-items:center;gap:8px}
+.tag{font-size:9.5px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;
+  color:var(--muted);border:1px solid var(--line);border-radius:20px;padding:1px 7px;flex:none}
+.track{position:relative;display:flex;height:17px;border-radius:5px;overflow:hidden;
+  background:var(--panel-2)}
+.seg{height:100%}
+.seg.self{background:var(--self)} .seg.oa{background:var(--oa)} .seg.rep{background:var(--rep)}
+.seg+.seg{box-shadow:-1px 0 0 var(--panel)}
+.gline{position:absolute;top:-2px;bottom:-2px;left:90%;width:2px;background:var(--goal);
+  opacity:.92;z-index:2}
+.val{font-family:Archivo;font-weight:800;font-size:18px;text-align:right;
+  font-variant-numeric:tabular-nums;color:var(--ink)}
+.row.hit .val{color:var(--self)}
+.pctsign{font-size:12px;font-weight:600;color:var(--muted);margin-left:1px}
+.foot{margin:16px 4px 4px;font-size:11.5px;color:var(--muted);display:flex;
+  flex-wrap:wrap;gap:6px 18px;justify-content:space-between}
+@media (max-width:820px){ .board{grid-template-columns:1fr} }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="head">
+    <div class="eyebrow">Jordano's Foodservice · Sales Team</div>
+    <h1>Digital Adoption Leaderboard</h1>
+    <p class="sub">Share of each rep's Pepper orders that came in <b style="color:var(--head-ink)">without the rep keying them</b> — the customer placed it themselves, or it came through Order Agent. The rest is manual, rep-entered ordering. Goal: 90%.</p>
+    <div class="chips">
+      <div class="chip big"><div class="k">Team combined</div><div class="v">61%</div></div>
+      <div class="chip"><div class="k">Customer self-serve</div><div class="v">41%</div></div>
+      <div class="chip"><div class="k">Order Agent</div><div class="v">20%</div></div>
+      <div class="chip goal"><div class="k">Goal</div><div class="v">90%</div></div>
+      <div class="chip"><div class="k">Reps ranked</div><div class="v">42</div></div>
+    </div>
+  </header>
+  <div class="legend">
+    <span class="key"><span class="sw self"></span> <b>Customer self-serve</b></span>
+    <span class="key"><span class="sw oa"></span> <b>Order Agent</b></span>
+    <span class="key"><span class="sw rep"></span> <b>Rep-entered (manual)</b></span>
+    <span class="key"><span class="sw goal"></span> 90% goal</span>
+    <span style="margin-left:auto">Combined % = self-serve + Order Agent</span>
+  </div>
+  <div class="board">
+    <section class="col">
+      <div class="colhead"><span>#</span><span>Rep</span><span class="ch-track">Order mix<span class="ch-goal">90%</span></span><span class="ch-val">Combined</span></div>
+      <div class="row hit" title="Galen Brill — 99% combined  |  self-serve 42%  ·  Order Agent 57%  ·  rep-entered 1%  ·  803 Pepper orders">
+        <div class="rank gold">1</div>
+        <div class="name">Galen Brill</div>
+        <div class="track">
+          <div class="seg self" style="width:41.59%"></div>
+          <div class="seg oa" style="width:56.91%"></div>
+          <div class="seg rep" style="width:1.49%"></div>
+          <div class="gline"></div>
+        </div>
+        <div class="val">99<span class="pctsign">%</span></div>
+      </div>
+      <div class="row hit" title="Brie Mckernan — 98% combined  |  self-serve 61%  ·  Order Agent 37%  ·  rep-entered 2%  ·  1,236 Pepper orders">
+        <div class="rank silver">2</div>
+        <div class="name">Brie Mckernan</div>
+        <div class="track">
+          <div class="seg self" style="width:61.41%"></div>
+          <div class="seg oa" style="width:36.97%"></div>
+          <div class="seg rep" style="width:1.62%"></div>
+          <div class="gline"></div>
+        </div>
+        <div class="val">98<span class="pctsign">%</span></div>
+      </div>
+      <div class="row" title="Ryan Connell — 84% combined  |  self-serve 37%  ·  Order Agent 47%  ·  rep-entered 16%  ·  2,199 Pepper orders">
+        <div class="rank bronze">3</div>
+        <div class="name">Ryan Connell</div>
+        <div class="track">
+          <div class="seg self" style="width:36.88%"></div>
+          <div class="seg oa" style="width:47.39%"></div>
+          <div class="seg rep" style="width:15.73%"></div>
+          <div class="gline"></div>
+        </div>
+        <div class="val">84<span class="pctsign">%</span></div>
+      </div>
+      <div class="row" title="Sean Clark — 73% combined  |  self-serve 52%  ·  Order Agent 22%  ·  rep-entered 27%  ·  1,058 Pepper orders">
+        <div class="rank ">4</div>
+        <div class="name">Sean Clark</div>
+        <div class="track">
+          <div class="seg self" style="width:51.61%"></div>
+          <div class="seg oa" style="width:21.64%"></div>
+          <div class="seg rep" style="width:26.75%"></div>
+          <div class="gline"></div>
+        </div>
+        <div class="val">73<span class="pctsign">%</span></div>
+      </div>
+      <div class="row" title="Joel Cummings — 73% combined  |  self-serve 56%  ·  Order Agent 17%  ·  rep-entered 27%  ·  239 Pepper orders">
+        <div class="rank ">5</div>
+        <div class="name">Joel Cummings</div>
+        <div class="track">
+          <div class="seg self" style="width:56.07%"></div>
+          <div class="seg oa" style="width:16.74%"></div>
+          <div class="seg rep" style="width:27.20%"></div>
+          <div class="gline"></div>
+        </div>
+        <div class="val">73<span class="pctsign">%</span></div>
+      </div>
+      <div class="row" title="Bob Weirum — 72% combined  |  self-serve 23%  ·  Order Agent 49%  ·  rep-entered 28%  ·  1,532 Pepper orders">
+        <div class="rank ">6</div>
+        <div class="name">Bob Weirum</div>
+        <div class="track">
+          <div class="seg self" style="width:22.72%"></div>
+          <div class="seg oa" style="width:49.35%"></div>
+          <div class="seg rep" style="width:27.94%"></div>
+          <div class="gline"></div>
+        </div>
+        <div class="val">72<span class="pctsign">%</span></div>
+      </div>
+      <div class="row" title="Manuel Benitez — 72% combined  |  self-serve 69%  ·  Order Agent 3%  ·  rep-entered 28%  ·  1,490 Pepper orders">
+        <div class="rank ">7</div>
+        <div class="name">Manuel Benitez</div>
+        <div class="track">
+          <div class="seg self" style="width:68.99%"></div>
+          <div class="seg oa" style="width:2.75%"></div>
+          <div class="seg rep" style="width:28.26%"></div>
+          <div class="gline"></div>
+        </div>
+        <div class="val">72<span class="pctsign">%</span></div>
+      </div>
+      <div class="row" title="Troy Brown — 71% combined  |  self-serve 32%  ·  Order Agent 39%  ·  rep-entered 29%  ·  595 Pepper orders">
+        <div class="rank ">8</div>
+        <div class="name">Troy Brown</div>
+        <div class="track">
+          <div class="seg self" style="width:32.10%"></div>
+          <div class="seg oa" style="width:38.82%"></div>
+          <div class="seg rep" style="width:29.08%"></div>
+          <div class="gline"></div>
+        </div>
+        <div class="val">71<span class="pctsign">%</span></div>
+      </div>
+      <div class="row" title="Jill Brown — 71% combined  |  self-serve 68%  ·  Order Agent 2%  ·  rep-entered 29%  ·  1,691 Pepper orders">
+        <div class="rank ">9</div>
+        <div class="name">Jill Brown</div>
+        <div class="track">
+          <div class="seg self" style="width:68.36%"></div>
+          <div class="seg oa" style="width:2.37%"></div>
+          <div class="seg rep" style="width:29.27%"></div>
+          <div class="gline"></div>
+        </div>
+        <div class="val">71<span class="pctsign">%</span></div>
+      </div>
+      <div class="row" title="Richard Padilla — 69% combined  |  self-serve 49%  ·  Order Agent 19%  ·  rep-entered 31%  ·  1,086 Pepper orders">
+        <div class="rank ">10</div>
+        <div class="name">Richard Padilla</div>
+        <div class="track">
+          <div class="seg self" style="width:49.26%"></div>
+          <div class="seg oa" style="width:19.43%"></div>
+          <div class="seg rep" style="width:31.31%"></div>
+          <div class="gline"></div>
+        </div>
+        <div class="val">69<span class="pctsign">%</span></div>
+      </div>
+      <div class="row" title="Mike Lamas — 68% combined  |  self-serve 47%  ·  Order Agent 21%  ·  rep-entered 32%  ·  931 Pepper orders">
+        <div class="rank ">11</div>
+        <div class="name">Mike Lamas</div>
+        <div class="track">
+          <div class="seg self" style="width:46.62%"></div>
+          <div class="seg oa" style="width:21.37%"></div>
+          <div class="seg rep" style="width:32.01%"></div>
+          <div class="gline"></div>
+        </div>
+        <div class="val">68<span class="pctsign">%</span></div>
+      </div>
+      <div class="row" title="Anthony Ritter — 65% combined  |  self-serve 47%  ·  Order Agent 18%  ·  rep-entered 35%  ·  1,808 Pepper orders">
+        <div class="rank ">12</div>
+        <div class="name">Anthony Ritter</div>
+        <div class="track">
+          <div class="seg self" style="width:46.85%"></div>
+          <div class="seg oa" style="width:18.36%"></div>
+          <div class="seg rep" style="width:34.79%"></div>
+          <div class="gline"></div>
+        </div>
+        <div class="val">65<span class="pctsign">%</span></div>
+      </div>
+      <div class="row" title="Steve Smeets — 65% combined  |  self-serve 45%  ·  Order Agent 21%  ·  rep-entered 35%  ·  934 Pepper orders">
+        <div class="rank ">13</div>
+        <div class="name">Steve Smeets</div>
+        <div class="track">
+          <div class="seg self" style="width:44.54%"></div>
+          <div class="seg oa" style="width:20.56%"></div>
+          <div class="seg rep" style="width:34.90%"></div>
+          <div class="gline"></div>
+        </div>
+        <div class="val">65<span class="pctsign">%</span></div>
+      </div>
+      <div class="row" title="Cameron Pyles — 63% combined  |  self-serve 59%  ·  Order Agent 4%  ·  rep-entered 37%  ·  214 Pepper orders">
+        <div class="rank ">14</div>
+        <div class="name">Cameron Pyles</div>
+        <div class="track">
+          <div class="seg self" style="width:58.88%"></div>
+          <div class="seg oa" style="width:4.21%"></div>
+          <div class="seg rep" style="width:36.92%"></div>
+          <div class="gline"></div>
+        </div>
+        <div class="val">63<span class="pctsign">%</span></div>
+      </div>
+      <div class="row" title="James Hernandez — 63% combined  |  self-serve 33%  ·  Order Agent 30%  ·  rep-entered 37%  ·  86 Pepper orders">
+        <div class="rank ">15</div>
+        <div class="name">James Hernandez</div>
+        <div class="track">
+          <div class="seg self" style="width:32.56%"></div>
+          <div class="seg oa" style="width:30.23%"></div>
+          <div class="seg rep" style="width:37.21%"></div>
+          <div class="gline"></div>
+        </div>
+        <div class="val">63<span class="pctsign">%</span></div>
+      </div>
+      <div class="row" title="Shawn Wyman — 63% combined  |  self-serve 63%  ·  Order Agent 0%  ·  rep-entered 37%  ·  75 Pepper orders">
+        <div class="rank ">16</div>
+        <div class="name">Shawn Wyman</div>
+        <div class="track">
+          <div class="seg self" style="width:62.67%"></div>
+          <div class="seg oa" style="width:0.00%"></div>
+          <div class="seg rep" style="width:37.33%"></div>
+          <div class="gline"></div>
+        </div>
+        <div class="val">63<span class="pctsign">%</span></div>
+      </div>
+      <div class="row" title="Mark Jackson — 62% combined  |  self-serve 41%  ·  Order Agent 21%  ·  rep-entered 38%  ·  1,451 Pepper orders">
+        <div class="rank ">17</div>
+        <div class="name">Mark Jackson</div>
+        <div class="track">
+          <div class="seg self" style="width:41.01%"></div>
+          <div class="seg oa" style="width:20.74%"></div>
+          <div class="seg rep" style="width:38.25%"></div>
+          <div class="gline"></div>
+        </div>
+        <div class="val">62<span class="pctsign">%</span></div>
+      </div>
+      <div class="row" title="Joe Ramboldt — 62% combined  |  self-serve 58%  ·  Order Agent 3%  ·  rep-entered 38%  ·  822 Pepper orders">
+        <div class="rank ">18</div>
+        <div class="name">Joe Ramboldt</div>
+        <div class="track">
+          <div class="seg self" style="width:58.39%"></div>
+          <div class="seg oa" style="width:3.28%"></div>
+          <div class="seg rep" style="width:38.32%"></div>
+          <div class="gline"></div>
+        </div>
+        <div class="val">62<span class="pctsign">%</span></div>
+      </div>
+      <div class="row" title="Sean Bevan — 60% combined  |  self-serve 55%  ·  Order Agent 5%  ·  rep-entered 40%  ·  1,647 Pepper orders">
+        <div class="rank ">19</div>
+        <div class="name">Sean Bevan</div>
+        <div class="track">
+          <div class="seg self" style="width:54.64%"></div>
+          <div class="seg oa" style="width:5.40%"></div>
+          <div class="seg rep" style="width:39.95%"></div>
+          <div class="gline"></div>
+        </div>
+        <div class="val">60<span class="pctsign">%</span></div>
+      </div>
+      <div class="row" title="Derek Bettencourt — 60% combined  |  self-serve 36%  ·  Order Agent 24%  ·  rep-entered 40%  ·  2,427 Pepper orders">
+        <div class="rank ">20</div>
+        <div class="name">Derek Bettencourt</div>
+        <div class="track">
+          <div class="seg self" style="width:35.52%"></div>
+          <div class="seg oa" style="width:24.06%"></div>
+          <div class="seg rep" style="width:40.42%"></div>
+          <div class="gline"></div>
+        </div>
+        <div class="val">60<span class="pctsign">%</span></div>
+      </div>
+      <div class="row" title="Bryan Burns — 59% combined  |  self-serve 39%  ·  Order Agent 20%  ·  rep-entered 41%  ·  2,331 Pepper orders">
+        <div class="rank ">21</div>
+        <div class="name">Bryan Burns</div>
+        <div class="track">
+          <div class="seg self" style="width:39.12%"></div>
+          <div class="seg oa" style="width:19.56%"></div>
+          <div class="seg rep" style="width:41.31%"></div>
+          <div class="gline"></div>
+        </div>
+        <div class="val">59<span class="pctsign">%</span></div>
+      </div>
+    </section>
+    <section class="col">
+      <div class="colhead"><span>#</span><span>Rep</span><span class="ch-track">Order mix<span class="ch-goal">90%</span></span><span class="ch-val">Combined</span></div>
+      <div class="row" title="Doug Sharpe — 58% combined  |  self-serve 54%  ·  Order Agent 4%  ·  rep-entered 42%  ·  2,979 Pepper orders">
+        <div class="rank ">22</div>
+        <div class="name">Doug Sharpe</div>
+        <div class="track">
+          <div class="seg self" style="width:53.98%"></div>
+          <div class="seg oa" style="width:4.16%"></div>
+          <div class="seg rep" style="width:41.86%"></div>
+          <div class="gline"></div>
+        </div>
+        <div class="val">58<span class="pctsign">%</span></div>
+      </div>
+      <div class="row" title="Chantell St.Claire — 58% combined  |  self-serve 39%  ·  Order Agent 18%  ·  rep-entered 42%  ·  1,730 Pepper orders">
+        <div class="rank ">23</div>
+        <div class="name">Chantell St.Claire</div>
+        <div class="track">
+          <div class="seg self" style="width:39.13%"></div>
+          <div class="seg oa" style="width:18.50%"></div>
+          <div class="seg rep" style="width:42.37%"></div>
+          <div class="gline"></div>
+        </div>
+        <div class="val">58<span class="pctsign">%</span></div>
+      </div>
+      <div class="row" title="Daniel Hook — 57% combined  |  self-serve 49%  ·  Order Agent 8%  ·  rep-entered 43%  ·  2,744 Pepper orders">
+        <div class="rank ">24</div>
+        <div class="name">Daniel Hook</div>
+        <div class="track">
+          <div class="seg self" style="width:49.02%"></div>
+          <div class="seg oa" style="width:8.02%"></div>
+          <div class="seg rep" style="width:42.97%"></div>
+          <div class="gline"></div>
+        </div>
+        <div class="val">57<span class="pctsign">%</span></div>
+      </div>
+      <div class="row" title="Jessica Costello — 57% combined  |  self-serve 34%  ·  Order Agent 22%  ·  rep-entered 43%  ·  1,183 Pepper orders">
+        <div class="rank ">25</div>
+        <div class="name">Jessica Costello</div>
+        <div class="track">
+          <div class="seg self" style="width:34.49%"></div>
+          <div class="seg oa" style="width:22.32%"></div>
+          <div class="seg rep" style="width:43.20%"></div>
+          <div class="gline"></div>
+        </div>
+        <div class="val">57<span class="pctsign">%</span></div>
+      </div>
+      <div class="row" title="Rich Mullinix — 55% combined  |  self-serve 22%  ·  Order Agent 33%  ·  rep-entered 45%  ·  3,280 Pepper orders">
+        <div class="rank ">26</div>
+        <div class="name">Rich Mullinix</div>
+        <div class="track">
+          <div class="seg self" style="width:22.44%"></div>
+          <div class="seg oa" style="width:32.59%"></div>
+          <div class="seg rep" style="width:44.97%"></div>
+          <div class="gline"></div>
+        </div>
+        <div class="val">55<span class="pctsign">%</span></div>
+      </div>
+      <div class="row" title="Luis Segura — 54% combined  |  self-serve 46%  ·  Order Agent 9%  ·  rep-entered 46%  ·  1,357 Pepper orders">
+        <div class="rank ">27</div>
+        <div class="name">Luis Segura</div>
+        <div class="track">
+          <div class="seg self" style="width:45.84%"></div>
+          <div class="seg oa" style="width:8.62%"></div>
+          <div class="seg rep" style="width:45.54%"></div>
+          <div class="gline"></div>
+        </div>
+        <div class="val">54<span class="pctsign">%</span></div>
+      </div>
+      <div class="row" title="Peter Baer — 54% combined  |  self-serve 52%  ·  Order Agent 2%  ·  rep-entered 46%  ·  1,345 Pepper orders">
+        <div class="rank ">28</div>
+        <div class="name">Peter Baer</div>
+        <div class="track">
+          <div class="seg self" style="width:52.34%"></div>
+          <div class="seg oa" style="width:1.86%"></div>
+          <div class="seg rep" style="width:45.80%"></div>
+          <div class="gline"></div>
+        </div>
+        <div class="val">54<span class="pctsign">%</span></div>
+      </div>
+      <div class="row" title="John Tomasso — 53% combined  |  self-serve 24%  ·  Order Agent 30%  ·  rep-entered 47%  ·  2,372 Pepper orders">
+        <div class="rank ">29</div>
+        <div class="name">John Tomasso</div>
+        <div class="track">
+          <div class="seg self" style="width:23.52%"></div>
+          <div class="seg oa" style="width:29.81%"></div>
+          <div class="seg rep" style="width:46.67%"></div>
+          <div class="gline"></div>
+        </div>
+        <div class="val">53<span class="pctsign">%</span></div>
+      </div>
+      <div class="row" title="Don Owens — 53% combined  |  self-serve 20%  ·  Order Agent 33%  ·  rep-entered 47%  ·  2,295 Pepper orders">
+        <div class="rank ">30</div>
+        <div class="name">Don Owens</div>
+        <div class="track">
+          <div class="seg self" style="width:20.00%"></div>
+          <div class="seg oa" style="width:33.20%"></div>
+          <div class="seg rep" style="width:46.80%"></div>
+          <div class="gline"></div>
+        </div>
+        <div class="val">53<span class="pctsign">%</span></div>
+      </div>
+      <div class="row" title="Adam Herrera — 53% combined  |  self-serve 29%  ·  Order Agent 24%  ·  rep-entered 47%  ·  5,430 Pepper orders">
+        <div class="rank ">31</div>
+        <div class="name">Adam Herrera</div>
+        <div class="track">
+          <div class="seg self" style="width:29.37%"></div>
+          <div class="seg oa" style="width:23.52%"></div>
+          <div class="seg rep" style="width:47.11%"></div>
+          <div class="gline"></div>
+        </div>
+        <div class="val">53<span class="pctsign">%</span></div>
+      </div>
+      <div class="row" title="Luis Contreras — 53% combined  |  self-serve 51%  ·  Order Agent 2%  ·  rep-entered 47%  ·  336 Pepper orders">
+        <div class="rank ">32</div>
+        <div class="name">Luis Contreras</div>
+        <div class="track">
+          <div class="seg self" style="width:50.60%"></div>
+          <div class="seg oa" style="width:2.08%"></div>
+          <div class="seg rep" style="width:47.32%"></div>
+          <div class="gline"></div>
+        </div>
+        <div class="val">53<span class="pctsign">%</span></div>
+      </div>
+      <div class="row" title="Marshall Lencioni — 52% combined  |  self-serve 37%  ·  Order Agent 15%  ·  rep-entered 48%  ·  1,715 Pepper orders">
+        <div class="rank ">33</div>
+        <div class="name">Marshall Lencioni</div>
+        <div class="track">
+          <div class="seg self" style="width:36.91%"></div>
+          <div class="seg oa" style="width:14.75%"></div>
+          <div class="seg rep" style="width:48.34%"></div>
+          <div class="gline"></div>
+        </div>
+        <div class="val">52<span class="pctsign">%</span></div>
+      </div>
+      <div class="row" title="Jacob Lopez — 50% combined  |  self-serve 28%  ·  Order Agent 22%  ·  rep-entered 50%  ·  2,526 Pepper orders">
+        <div class="rank ">34</div>
+        <div class="name">Jacob Lopez</div>
+        <div class="track">
+          <div class="seg self" style="width:28.42%"></div>
+          <div class="seg oa" style="width:22.05%"></div>
+          <div class="seg rep" style="width:49.52%"></div>
+          <div class="gline"></div>
+        </div>
+        <div class="val">50<span class="pctsign">%</span></div>
+      </div>
+      <div class="row" title="Ernie Veloz — 49% combined  |  self-serve 27%  ·  Order Agent 22%  ·  rep-entered 51%  ·  2,544 Pepper orders">
+        <div class="rank ">35</div>
+        <div class="name">Ernie Veloz</div>
+        <div class="track">
+          <div class="seg self" style="width:27.28%"></div>
+          <div class="seg oa" style="width:21.82%"></div>
+          <div class="seg rep" style="width:50.90%"></div>
+          <div class="gline"></div>
+        </div>
+        <div class="val">49<span class="pctsign">%</span></div>
+      </div>
+      <div class="row" title="Randy Sifuentez — 49% combined  |  self-serve 36%  ·  Order Agent 12%  ·  rep-entered 51%  ·  2,148 Pepper orders">
+        <div class="rank ">36</div>
+        <div class="name">Randy Sifuentez</div>
+        <div class="track">
+          <div class="seg self" style="width:36.41%"></div>
+          <div class="seg oa" style="width:12.10%"></div>
+          <div class="seg rep" style="width:51.49%"></div>
+          <div class="gline"></div>
+        </div>
+        <div class="val">49<span class="pctsign">%</span></div>
+      </div>
+      <div class="row" title="Joe Torres — 47% combined  |  self-serve 20%  ·  Order Agent 27%  ·  rep-entered 53%  ·  1,453 Pepper orders">
+        <div class="rank ">37</div>
+        <div class="name">Joe Torres</div>
+        <div class="track">
+          <div class="seg self" style="width:20.30%"></div>
+          <div class="seg oa" style="width:26.57%"></div>
+          <div class="seg rep" style="width:53.13%"></div>
+          <div class="gline"></div>
+        </div>
+        <div class="val">47<span class="pctsign">%</span></div>
+      </div>
+      <div class="row" title="James Soto — 47% combined  |  self-serve 42%  ·  Order Agent 5%  ·  rep-entered 53%  ·  696 Pepper orders">
+        <div class="rank ">38</div>
+        <div class="name">James Soto</div>
+        <div class="track">
+          <div class="seg self" style="width:41.95%"></div>
+          <div class="seg oa" style="width:4.89%"></div>
+          <div class="seg rep" style="width:53.16%"></div>
+          <div class="gline"></div>
+        </div>
+        <div class="val">47<span class="pctsign">%</span></div>
+      </div>
+      <div class="row" title="Osvaldo Ceja-Vera — 44% combined  |  self-serve 19%  ·  Order Agent 24%  ·  rep-entered 56%  ·  1,740 Pepper orders">
+        <div class="rank ">39</div>
+        <div class="name">Osvaldo Ceja-Vera</div>
+        <div class="track">
+          <div class="seg self" style="width:19.48%"></div>
+          <div class="seg oa" style="width:24.14%"></div>
+          <div class="seg rep" style="width:56.38%"></div>
+          <div class="gline"></div>
+        </div>
+        <div class="val">44<span class="pctsign">%</span></div>
+      </div>
+      <div class="row" title="Alex Torres — 43% combined  |  self-serve 15%  ·  Order Agent 29%  ·  rep-entered 57%  ·  2,605 Pepper orders">
+        <div class="rank ">40</div>
+        <div class="name">Alex Torres</div>
+        <div class="track">
+          <div class="seg self" style="width:14.78%"></div>
+          <div class="seg oa" style="width:28.60%"></div>
+          <div class="seg rep" style="width:56.62%"></div>
+          <div class="gline"></div>
+        </div>
+        <div class="val">43<span class="pctsign">%</span></div>
+      </div>
+      <div class="row" title="Mark Brunner — 20% combined  |  self-serve 20%  ·  Order Agent 0%  ·  rep-entered 80%  ·  10 Pepper orders">
+        <div class="rank ">41</div>
+        <div class="name">Mark Brunner<span class="tag">low vol</span></div>
+        <div class="track">
+          <div class="seg self" style="width:20.00%"></div>
+          <div class="seg oa" style="width:0.00%"></div>
+          <div class="seg rep" style="width:80.00%"></div>
+          <div class="gline"></div>
+        </div>
+        <div class="val">20<span class="pctsign">%</span></div>
+      </div>
+      <div class="row" title="Omar Quezada — 17% combined  |  self-serve 0%  ·  Order Agent 17%  ·  rep-entered 83%  ·  18 Pepper orders">
+        <div class="rank ">42</div>
+        <div class="name">Omar Quezada<span class="tag">low vol</span></div>
+        <div class="track">
+          <div class="seg self" style="width:0.00%"></div>
+          <div class="seg oa" style="width:16.67%"></div>
+          <div class="seg rep" style="width:83.33%"></div>
+          <div class="gline"></div>
+        </div>
+        <div class="val">17<span class="pctsign">%</span></div>
+      </div>
+    </section>
+  </div>
+  <div class="foot">
+    <span>Last 90 days · Pepper orders only (offline / ERP invoice excluded). Order Agent counts whether the rep or the customer submitted it.</span>
+    <span>Updated 2026-09-04 · Hover a rep for the full breakdown</span>
+  </div>
+</div>
+</body>
+</html>

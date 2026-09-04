@@ -1,0 +1,435 @@
+{
+ "meta": {
+  "window_label": "last 90 days",
+  "generated": "2026-09-04",
+  "goal": 90
+ },
+ "team": {
+  "combined": 61,
+  "self_serve": 41,
+  "oa": 20,
+  "reps": 42
+ },
+ "reps": [
+  {
+   "name": "Galen Brill",
+   "orders": 803,
+   "self_serve": 0.4159,
+   "oa": 0.5691,
+   "rep_entered": 0.0149,
+   "combined": 0.9851,
+   "seg": "Established",
+   "rank": 1
+  },
+  {
+   "name": "Brie Mckernan",
+   "orders": 1236,
+   "self_serve": 0.6141,
+   "oa": 0.3697,
+   "rep_entered": 0.0162,
+   "combined": 0.9838,
+   "seg": "Established",
+   "rank": 2
+  },
+  {
+   "name": "Ryan Connell",
+   "orders": 2199,
+   "self_serve": 0.3688,
+   "oa": 0.4739,
+   "rep_entered": 0.1573,
+   "combined": 0.8427,
+   "seg": "Established",
+   "rank": 3
+  },
+  {
+   "name": "Sean Clark",
+   "orders": 1058,
+   "self_serve": 0.5161,
+   "oa": 0.2164,
+   "rep_entered": 0.2675,
+   "combined": 0.7325,
+   "seg": "Established",
+   "rank": 4
+  },
+  {
+   "name": "Joel Cummings",
+   "orders": 239,
+   "self_serve": 0.5607,
+   "oa": 0.1674,
+   "rep_entered": 0.272,
+   "combined": 0.728,
+   "seg": "Established",
+   "rank": 5
+  },
+  {
+   "name": "Bob Weirum",
+   "orders": 1532,
+   "self_serve": 0.2272,
+   "oa": 0.4935,
+   "rep_entered": 0.2794,
+   "combined": 0.7206,
+   "seg": "Established",
+   "rank": 6
+  },
+  {
+   "name": "Manuel Benitez",
+   "orders": 1490,
+   "self_serve": 0.6899,
+   "oa": 0.0275,
+   "rep_entered": 0.2826,
+   "combined": 0.7174,
+   "seg": "Established",
+   "rank": 7
+  },
+  {
+   "name": "Troy Brown",
+   "orders": 595,
+   "self_serve": 0.321,
+   "oa": 0.3882,
+   "rep_entered": 0.2908,
+   "combined": 0.7092,
+   "seg": "Established",
+   "rank": 8
+  },
+  {
+   "name": "Jill Brown",
+   "orders": 1691,
+   "self_serve": 0.6836,
+   "oa": 0.0237,
+   "rep_entered": 0.2927,
+   "combined": 0.7073,
+   "seg": "Established",
+   "rank": 9
+  },
+  {
+   "name": "Richard Padilla",
+   "orders": 1086,
+   "self_serve": 0.4926,
+   "oa": 0.1943,
+   "rep_entered": 0.3131,
+   "combined": 0.6869,
+   "seg": "Established",
+   "rank": 10
+  },
+  {
+   "name": "Mike Lamas",
+   "orders": 931,
+   "self_serve": 0.4662,
+   "oa": 0.2137,
+   "rep_entered": 0.3201,
+   "combined": 0.6799,
+   "seg": "Established",
+   "rank": 11
+  },
+  {
+   "name": "Anthony Ritter",
+   "orders": 1808,
+   "self_serve": 0.4685,
+   "oa": 0.1836,
+   "rep_entered": 0.3479,
+   "combined": 0.6521,
+   "seg": "Established",
+   "rank": 12
+  },
+  {
+   "name": "Steve Smeets",
+   "orders": 934,
+   "self_serve": 0.4454,
+   "oa": 0.2056,
+   "rep_entered": 0.349,
+   "combined": 0.651,
+   "seg": "Established",
+   "rank": 13
+  },
+  {
+   "name": "Cameron Pyles",
+   "orders": 214,
+   "self_serve": 0.5888,
+   "oa": 0.0421,
+   "rep_entered": 0.3692,
+   "combined": 0.6308,
+   "seg": "Established",
+   "rank": 14
+  },
+  {
+   "name": "James Hernandez",
+   "orders": 86,
+   "self_serve": 0.3256,
+   "oa": 0.3023,
+   "rep_entered": 0.3721,
+   "combined": 0.6279,
+   "seg": "Established",
+   "rank": 15
+  },
+  {
+   "name": "Shawn Wyman",
+   "orders": 75,
+   "self_serve": 0.6267,
+   "oa": 0.0,
+   "rep_entered": 0.3733,
+   "combined": 0.6267,
+   "seg": "Established",
+   "rank": 16
+  },
+  {
+   "name": "Mark Jackson",
+   "orders": 1451,
+   "self_serve": 0.4101,
+   "oa": 0.2074,
+   "rep_entered": 0.3825,
+   "combined": 0.6175,
+   "seg": "Established",
+   "rank": 17
+  },
+  {
+   "name": "Joe Ramboldt",
+   "orders": 822,
+   "self_serve": 0.5839,
+   "oa": 0.0328,
+   "rep_entered": 0.3832,
+   "combined": 0.6168,
+   "seg": "Established",
+   "rank": 18
+  },
+  {
+   "name": "Sean Bevan",
+   "orders": 1647,
+   "self_serve": 0.5464,
+   "oa": 0.054,
+   "rep_entered": 0.3995,
+   "combined": 0.6005,
+   "seg": "Established",
+   "rank": 19
+  },
+  {
+   "name": "Derek Bettencourt",
+   "orders": 2427,
+   "self_serve": 0.3552,
+   "oa": 0.2406,
+   "rep_entered": 0.4042,
+   "combined": 0.5958,
+   "seg": "Established",
+   "rank": 20
+  },
+  {
+   "name": "Bryan Burns",
+   "orders": 2331,
+   "self_serve": 0.3912,
+   "oa": 0.1956,
+   "rep_entered": 0.4131,
+   "combined": 0.5869,
+   "seg": "Established",
+   "rank": 21
+  },
+  {
+   "name": "Doug Sharpe",
+   "orders": 2979,
+   "self_serve": 0.5398,
+   "oa": 0.0416,
+   "rep_entered": 0.4186,
+   "combined": 0.5814,
+   "seg": "Established",
+   "rank": 22
+  },
+  {
+   "name": "Chantell St.Claire",
+   "orders": 1730,
+   "self_serve": 0.3913,
+   "oa": 0.185,
+   "rep_entered": 0.4237,
+   "combined": 0.5763,
+   "seg": "Established",
+   "rank": 23
+  },
+  {
+   "name": "Daniel Hook",
+   "orders": 2744,
+   "self_serve": 0.4902,
+   "oa": 0.0802,
+   "rep_entered": 0.4297,
+   "combined": 0.5703,
+   "seg": "Established",
+   "rank": 24
+  },
+  {
+   "name": "Jessica Costello",
+   "orders": 1183,
+   "self_serve": 0.3449,
+   "oa": 0.2232,
+   "rep_entered": 0.432,
+   "combined": 0.568,
+   "seg": "Established",
+   "rank": 25
+  },
+  {
+   "name": "Rich Mullinix",
+   "orders": 3280,
+   "self_serve": 0.2244,
+   "oa": 0.3259,
+   "rep_entered": 0.4497,
+   "combined": 0.5503,
+   "seg": "Established",
+   "rank": 26
+  },
+  {
+   "name": "Luis Segura",
+   "orders": 1357,
+   "self_serve": 0.4584,
+   "oa": 0.0862,
+   "rep_entered": 0.4554,
+   "combined": 0.5446,
+   "seg": "Established",
+   "rank": 27
+  },
+  {
+   "name": "Peter Baer",
+   "orders": 1345,
+   "self_serve": 0.5234,
+   "oa": 0.0186,
+   "rep_entered": 0.458,
+   "combined": 0.542,
+   "seg": "Established",
+   "rank": 28
+  },
+  {
+   "name": "John Tomasso",
+   "orders": 2372,
+   "self_serve": 0.2352,
+   "oa": 0.2981,
+   "rep_entered": 0.4667,
+   "combined": 0.5333,
+   "seg": "Established",
+   "rank": 29
+  },
+  {
+   "name": "Don Owens",
+   "orders": 2295,
+   "self_serve": 0.2,
+   "oa": 0.332,
+   "rep_entered": 0.468,
+   "combined": 0.532,
+   "seg": "Established",
+   "rank": 30
+  },
+  {
+   "name": "Adam Herrera",
+   "orders": 5430,
+   "self_serve": 0.2937,
+   "oa": 0.2352,
+   "rep_entered": 0.4711,
+   "combined": 0.5289,
+   "seg": "Established",
+   "rank": 31
+  },
+  {
+   "name": "Luis Contreras",
+   "orders": 336,
+   "self_serve": 0.506,
+   "oa": 0.0208,
+   "rep_entered": 0.4732,
+   "combined": 0.5268,
+   "seg": "Established",
+   "rank": 32
+  },
+  {
+   "name": "Marshall Lencioni",
+   "orders": 1715,
+   "self_serve": 0.3691,
+   "oa": 0.1475,
+   "rep_entered": 0.4834,
+   "combined": 0.5166,
+   "seg": "Established",
+   "rank": 33
+  },
+  {
+   "name": "Jacob Lopez",
+   "orders": 2526,
+   "self_serve": 0.2842,
+   "oa": 0.2205,
+   "rep_entered": 0.4952,
+   "combined": 0.5048,
+   "seg": "Established",
+   "rank": 34
+  },
+  {
+   "name": "Ernie Veloz",
+   "orders": 2544,
+   "self_serve": 0.2728,
+   "oa": 0.2182,
+   "rep_entered": 0.509,
+   "combined": 0.491,
+   "seg": "Established",
+   "rank": 35
+  },
+  {
+   "name": "Randy Sifuentez",
+   "orders": 2148,
+   "self_serve": 0.3641,
+   "oa": 0.121,
+   "rep_entered": 0.5149,
+   "combined": 0.4851,
+   "seg": "Established",
+   "rank": 36
+  },
+  {
+   "name": "Joe Torres",
+   "orders": 1453,
+   "self_serve": 0.203,
+   "oa": 0.2657,
+   "rep_entered": 0.5313,
+   "combined": 0.4687,
+   "seg": "Established",
+   "rank": 37
+  },
+  {
+   "name": "James Soto",
+   "orders": 696,
+   "self_serve": 0.4195,
+   "oa": 0.0489,
+   "rep_entered": 0.5316,
+   "combined": 0.4684,
+   "seg": "Established",
+   "rank": 38
+  },
+  {
+   "name": "Osvaldo Ceja-Vera",
+   "orders": 1740,
+   "self_serve": 0.1948,
+   "oa": 0.2414,
+   "rep_entered": 0.5638,
+   "combined": 0.4362,
+   "seg": "Established",
+   "rank": 39
+  },
+  {
+   "name": "Alex Torres",
+   "orders": 2605,
+   "self_serve": 0.1478,
+   "oa": 0.286,
+   "rep_entered": 0.5662,
+   "combined": 0.4338,
+   "seg": "Established",
+   "rank": 40
+  },
+  {
+   "name": "Mark Brunner",
+   "orders": 10,
+   "self_serve": 0.2,
+   "oa": 0.0,
+   "rep_entered": 0.8,
+   "combined": 0.2,
+   "seg": "Low volume",
+   "rank": 41
+  },
+  {
+   "name": "Omar Quezada",
+   "orders": 18,
+   "self_serve": 0.0,
+   "oa": 0.1667,
+   "rep_entered": 0.8333,
+   "combined": 0.1667,
+   "seg": "Low volume",
+   "rank": 42
+  }
+ ]
+}
