@@ -69,13 +69,29 @@ def main(path):
     reps.sort(key=lambda x: -x["combined"])
     for i, r in enumerate(reps, 1):
         r["rank"] = i
-    est = [r for r in reps if r["seg"] == "Established"] or reps
-    team = {
-        "combined": round(sum(r["combined"] for r in est) / len(est) * 100),
-        "self_serve": round(sum(r["self_serve"] for r in est) / len(est) * 100),
-        "oa": round(sum(r["oa"] for r in est) / len(est) * 100),
-        "reps": len(reps),
-    }
+
+    # Team header = TRUE distributor-wide, order-weighted numbers (deduped at order grain),
+    # carried on every query row as dw_self / dw_oa / dw_orders. This is the actual company
+    # adoption % the customer tracks -- NOT an unweighted average of per-rep rates (which
+    # over-weights small-book reps). Falls back to the rep-rate mean only if the dw_* columns
+    # are missing (older query).
+    dw_orders = num(rows[0].get("DW_ORDERS")) if rows else 0
+    if dw_orders > 0:
+        dw_self = num(rows[0]["DW_SELF"]); dw_oa = num(rows[0]["DW_OA"])
+        team = {
+            "combined": round((dw_self + dw_oa) / dw_orders * 100),
+            "self_serve": round(dw_self / dw_orders * 100),
+            "oa": round(dw_oa / dw_orders * 100),
+            "reps": len(reps),
+        }
+    else:
+        est = [r for r in reps if r["seg"] == "Established"] or reps
+        team = {
+            "combined": round(sum(r["combined"] for r in est) / len(est) * 100),
+            "self_serve": round(sum(r["self_serve"] for r in est) / len(est) * 100),
+            "oa": round(sum(r["oa"] for r in est) / len(est) * 100),
+            "reps": len(reps),
+        }
     data = {
         "meta": {"window_label": "last 90 days",
                  "generated": datetime.date.today().isoformat(), "goal": 90},
